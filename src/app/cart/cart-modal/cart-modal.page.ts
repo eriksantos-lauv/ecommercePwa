@@ -14,18 +14,5 @@ export class CartModalPage implements OnInit {
   constructor(private modalCtrl: ModalController) { }
   
   ngOnInit() {
-    let storageItem = localStorage.getItem('cart');
-    this.cart = (storageItem) ? JSON.parse(storageItem) : [];
   }
-
-  close() {
-    this.modalCtrl.dismiss();
-  }
-
-  addToCart() {
-    if(this.selectedQtd > 0) {
-      
-    }
-  }
-
 }
