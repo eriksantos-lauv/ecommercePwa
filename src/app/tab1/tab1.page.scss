@@ -1,0 +1,8 @@
+.edited-thumb {
+    --size: 108px;
+    --border-radius: 0;
+    border-radius: var(--border-radius);
+    display: block;
+    width: var(--size);
+    height: var(--size);
+}

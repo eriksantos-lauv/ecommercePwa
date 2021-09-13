@@ -1,0 +1,58 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Cadastro
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <!-- <form class="ion-padding" (ngSubmit)="save()"> -->
+    <ion-card class="ion-padding">
+      <ion-card-content>
+        <ion-grid>
+          <ion-row>
+            <ion-item lines="none">
+              <ion-label position="stacked">Nome</ion-label>
+              <ion-input type="text" [(ngModel)]="form.name" name="title"></ion-input>
+            </ion-item>
+          </ion-row>
+          <ion-row>
+            <ion-item lines="none">
+              <ion-label position="stacked">Quantidade em estoque (KG)</ion-label>
+              <ion-input type="number" min="0" [(ngModel)]="form.stock" name="stock"></ion-input>
+            </ion-item>
+          </ion-row>
+          <ion-row>
+            <ion-item lines="none">
+              <ion-label position="stacked">Preço por KG (R$)</ion-label>
+              <ion-input type="number" min="0" [(ngModel)]="form.price" name="price"></ion-input>
+            </ion-item>
+          </ion-row>
+          <ion-row>
+            <ion-item lines="none">
+              <ion-label position="stacked">Tipo</ion-label>
+              <ion-select placeholder="Selecione" [(ngModel)]="form.type">
+                <ion-select-option value="Fruta">Fruta</ion-select-option>
+                <ion-select-option value="Verdura">Verdura</ion-select-option>
+              </ion-select>
+            </ion-item>
+          </ion-row>
+          <ion-row>
+            <ion-item lines="none" text-wrap>
+              <ion-label position="stacked">Imagem (URL)</ion-label>
+              <ion-input type="text" [(ngModel)]="form.imageUrl" name="image"></ion-input>
+              <img class="image-preview" *ngIf="form.imageUrl" src="{{ form.imageUrl }}" onError="this.src='https://www.lojabarion.com.br/images/thumbs/default-image_360.png'">
+            </ion-item>
+          </ion-row>
+          <ion-row>
+            <ion-col size="auto" class="ion-text-center">
+              <ion-button expand="fill" type="submit" (click)="save()">Cadastrar</ion-button>
+              <ion-button expand="fill" color="danger" (click)="resetForm()">Limpar</ion-button>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-card-content>
+    </ion-card>
+  <!-- </form> -->
+</ion-content>

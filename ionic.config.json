@@ -1,0 +1,7 @@
+{
+  "name": "freelengePwa",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

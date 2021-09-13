@@ -1,0 +1,69 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Itens</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+      <ion-item *ngFor="let item of cart">
+        <ion-grid>
+          <ion-row class="ion-align-items-center">
+            <ion-col size="2" class="ion-align-self-center">
+              <ion-button color="danger" fill="clear" (click)="decreaseItemAmount(item)">
+                <ion-icon name="remove-circle" slot="icon-only"></ion-icon>
+              </ion-button>
+            </ion-col>
+            <ion-col size="1" class="ion-align-self-center">
+              {{ item.cartAmount }}
+            </ion-col>
+            <ion-col size="2" class="ion-align-self-center">
+              <ion-button color="primary" fill="clear" (click)="increaseItemAmount(item)">
+                <ion-icon name="add-circle" slot="icon-only"></ion-icon>
+              </ion-button>
+            </ion-col>
+            <ion-col class="ion-text-end" size="2" offset="5">
+              <ion-button color="medium" fill="clear" (click)="removeItem(item)">
+                <ion-icon name="close-circle" slot="icon-only"></ion-icon>
+              </ion-button>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size="9">
+              <ion-chip outline>
+                <ion-avatar>
+                  <img *ngIf="item.imageUrl" src="{{ item.imageUrl }}" onError="this.src='https://www.lojabarion.com.br/images/thumbs/default-image_360.png'">
+                </ion-avatar>
+                <ion-label>{{item.name}}</ion-label>
+              </ion-chip>
+            </ion-col>
+            <ion-col class="ion-text-end">
+              {{ item.cartAmount * item.price | currency:'R$' }}
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-item>
+      <ion-item class="item-resume">
+        <ion-grid>
+          <ion-row>
+            <ion-col size="9">
+              Total:
+            </ion-col>
+            <ion-col size="3" class="ion-text-end">
+              <b>{{ getTotal() | currency:'R$' }}</b>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-item>
+  </ion-list>
+</ion-content>
+<ion-footer>
+  <ion-row>
+    <ion-col size="auto" class="ion-text-center">
+      <ion-button expand="fill" color="dark" (click)="close()">Continuar Comprando</ion-button>
+    </ion-col>
+    <ion-col size="auto" class="ion-text-center">
+      <ion-button expand="fill" color="primary" (click)="resumeCart()">Finalizar</ion-button>
+    </ion-col>
+  </ion-row>
+</ion-footer>

@@ -1,0 +1,78 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      API
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-grid fixed>
+    <ion-row *ngIf="!loading">
+      <ion-col class="ion-text-center" size-xs="12" size-sm="4" *ngFor="let user of users">
+        <ion-card>
+          <ion-card-header>
+            <ion-card-subtitle>Public API </ion-card-subtitle>
+            <ion-card-title>{{ user.first_name }} {{ user.last_name }}</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <img src="{{ user.avatar }}">
+          </ion-card-content>
+          <ion-footer>
+            <ion-row>
+              <ion-col class="ion-text-center">
+                <ion-icon name="thumbs-up-outline"></ion-icon>
+                <div>1.5k Curtidas</div>
+              </ion-col>
+              <ion-col class="ion-text-center">
+                <ion-icon name="thumbs-down-outline"></ion-icon>
+                <div>126 Descurtidas</div>
+              </ion-col>
+              <ion-col class="ion-text-center">
+                <ion-icon name="chatbox-ellipses-outline"></ion-icon>
+                <div>6 Comentários</div>
+              </ion-col>
+            </ion-row>
+          </ion-footer>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+    <ion-row *ngIf="loading">
+      <ion-col class="ion-text-center" size-xs="12" size-sm="4" *ngFor="let item of skelleton">
+        <ion-card>
+          <ion-card-header>
+            <ion-row>
+              <ion-col size="6" offset="3">
+                <ion-skeleton-text animated class="ion-margin-start" style="width: 80%"></ion-skeleton-text>
+                <ion-skeleton-text animated ></ion-skeleton-text>
+              </ion-col>
+            </ion-row>
+          </ion-card-header>
+          <ion-card-content class="ion-text-center">
+            <ion-row>
+              <ion-col size="4" offset="4">
+                <ion-thumbnail class="edited-thumb">
+                  <ion-skeleton-text  animated></ion-skeleton-text>
+                </ion-thumbnail>
+              </ion-col>
+            </ion-row>
+          </ion-card-content>
+          <ion-footer>
+            <ion-row>
+              <ion-col class="ion-text-center">
+                <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
+              </ion-col>
+              <ion-col class="ion-text-center">
+                <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
+              </ion-col>
+              <ion-col class="ion-text-center">
+                <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
+              </ion-col>
+            </ion-row>
+          </ion-footer>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  
+</ion-content>
